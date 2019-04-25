@@ -10,3 +10,15 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+function jsoN($data){
+    if($data === false){
+        $arr = [];
+        $arr['status'] = false;
+        $arr['data'] = '操作失败';
+        return json_encode($arr);
+    }
+    $arr = [];
+    $arr['status'] = true;
+    $arr['data'] = $data;
+    return json_encode($arr);
+}

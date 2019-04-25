@@ -1,6 +1,8 @@
 <?php
 namespace app\index\controller;
 
+use think\Request;
+
 class Index
 {
     public function index()
@@ -11,5 +13,14 @@ class Index
     public function hello($name = 'ThinkPHP5')
     {
         return 'hello,' . $name;
+    }
+
+
+    public function xxx($zzz, $aaa)
+    {
+        $arr['zzz'] = $zzz;
+        $arr['aaa'] = $aaa;
+        $arr['yyy'] = input('post.yyy');
+        return jsoN(false);
     }
 }
