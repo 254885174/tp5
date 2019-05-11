@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use think\Request;
 
+use Elasticsearch\ClientBuilder;
 class Index
 {
     public function index()
@@ -15,12 +16,23 @@ class Index
         return 'hello,' . $name;
     }
 
-
-    public function xxx($zzz, $aaa)
+    public function yyy()
     {
-        $arr['zzz'] = $zzz;
-        $arr['aaa'] = $aaa;
-        $arr['yyy'] = input('post.yyy');
-        return jsoN(false);
+        $arr['name'] = input('post.name');
+        $arr['password'] = input('post.password');
+        $rs = db('user')->insert($arr);
+        return json($rs);
+    }
+
+    public function zzz()
+    {
+        header('Access-Control-Allow-Origin:*');//允许所有来源访问
+        $userList = db('user')->field('name, password')->select();
+        return json($userList);
+    }
+
+    public function xxx()
+    {
+        echo '<a href="http://www.zhangjun.com/index/index/zzz">zzz</a>';
     }
 }
